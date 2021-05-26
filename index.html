@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Password Generator</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="assets/style/reset.css" />
+  <link rel="stylesheet" href="assets/style/style.css" />
 </head>
 
 <body>
@@ -20,8 +21,13 @@
       </div>
       <div class="card-body">
         <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
+        <!-- The button used to copy the text -->
+        
+        <div class="card-footer">
+          <button class="copy" onclick="copyText()">Copy text</button>
+        </div>
       </div>
-      <div class="card-footer">
+      <div class="card-footer divide">
         <button id="generate" class="btn">Generate Password</button>
       </div>
       <label> Character Length </label>
@@ -148,17 +154,26 @@
         <option value=127> 127 </option>
         <option value=128> 128 </option>
       </select><br>
-      <input type="checkbox" id="lowercase" class="check" name="lowercase" checked>
-      <label for="lowercase"> Lowercase letters</label><br>
-      <input type="checkbox" id="uppercase" class="check" name="uppercase">
-      <label for="uppercase"> Uppercase letters</label><br>
-      <input type="checkbox" id="numbers" class="check" name="numbers">
-      <label for="numbers"> Numbers</label><br>
-      <input type="checkbox" id="special" class="check" name="special">
-      <label for="special"> Special characters</label><br>
+      <div class="checkSpace">        
+        <input type="checkbox" id="lowercase" class="check" name="lowercase" checked>
+        <label for="lowercase"> Lowercase letters</label><br>
+      </div>
+      <div class="checkSpace">
+        <input type="checkbox" id="uppercase" class="check" name="uppercase">
+        <label for="uppercase"> Uppercase letters</label><br>
+      </div>
+      <div class="checkSpace">
+        <input type="checkbox" id="numbers" class="check" name="numbers">
+        <label for="numbers"> Numbers</label><br>
+      </div>
+      <div class="checkSpace">
+        <input type="checkbox" id="special" class="check" name="special">
+        <label for="special"> Special characters</label><br>
+      </div>
     </div>
   </div>
-  <script src="assets/script.js"></script>
+  <script src="assets/script/script.js"></script>
+  <script src="assets/script/copy.js"></script>
 </body>
 
 </html>
