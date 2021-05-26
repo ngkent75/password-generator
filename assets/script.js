@@ -14,69 +14,68 @@ const generatePassword = () => {
   // array for special characters called special
   const special = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"]
 
-  // Empty array for total options for generator to choose from that values will be pushed into.
-  let options = []
+  // Empty array for total options where all character options chosen will be pushed for generator to choose from when making password.
+  let options = [];
 
-  // Identifies values of checked options and assignes them to variables
+  // Identifies which options have been checked and assigns them to variables
   const lowLetterInc = document.getElementById('lowercase').checked
   const upLetterInc = document.getElementById('uppercase').checked
   const numberInc = document.getElementById('numbers').checked
   const specialInc = document.getElementById('special').checked
 
-  // checks the length of password passed off of input selected
+  // checks the length of password based off of input selected
   const passLength = document.getElementById('quantity').value
 
   // Concats characters based on user's choices
   if (lowLetterInc) {
     options = options.concat(lowLetters);
-  }
+  };
   if (upLetterInc) {
     options = options.concat(upLetters);
-  }
+  };
   if (numberInc) {
     options = options.concat(numbers);
-  }
+  };
   if (specialInc) {
     options = options.concat(special);
-  }
+  };
 
   // empty array where password will generate
   let pass = [];
 
+  // the password generator
+  // for loop that randomly pushes characters from the options array, until it reaches the desired length
   for (let i = 0; i < passLength; i++) {
     pass.push(options[Math.floor(Math.random() * options.length)]);
   };
 
-
-  // runs password generator until it includes all character types, ensuring at least one of each shows up, as long as the character is selected to be included in the password
+  // if all desired characters aren't included, rerun generator
   if (((!pass.some(r => lowLetters.includes(r))) && (lowLetterInc)) ||
     ((!pass.some(r => upLetters.includes(r))) && (upLetterInc)) ||
     ((!pass.some(r => numbers.includes(r))) && (numberInc)) ||
     ((!pass.some(r => special.includes(r))) && (specialInc))) {
 
-    console.log(`${pass} failed`);
     generatePassword();
     
     return;
   }
 
-  console.log(pass);
-
-  // turns pass array into a string so it looks like a proper password
+  // joins the array with the password values so that it's a string of the password
   password = pass.join("");
 
 };
 
-// Assignment Code
+// selects the generate button
 const generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 const writePassword = () => {
+
+  // function that generates the password
   generatePassword();
-  // console.log(password);
 
-  var passwordText = document.querySelector("#password");
-
+  // displays password
+  const passwordText = document.querySelector("#password");
   passwordText.value = password;
 
   return;
